@@ -1,4 +1,4 @@
-defmodule Discuss.Topic do
+defmodule DiscussWeb.Topic do
   use DiscussWeb, :model
 
   # find table 'topic' with 'title' field
@@ -12,7 +12,7 @@ defmodule Discuss.Topic do
     struct
     # produces a changeset
     |> cast(params, [:title])
-    # adds errors to changeset, 'title' is a must-have (can't be blank)
+    # adds errors to changeset, 'title' is required
     |> validate_required([:title])
   end
 end
