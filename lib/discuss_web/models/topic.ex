@@ -4,6 +4,8 @@ defmodule DiscussWeb.Topic do
   # find table 'topic' with 'title' field
   schema "topics" do
     field :title, :string
+
+    timestamps()
   end
 
   def changeset(struct, params \\ %{}) do
