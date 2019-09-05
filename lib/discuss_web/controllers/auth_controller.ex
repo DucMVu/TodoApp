@@ -5,7 +5,12 @@ defmodule DiscussWeb.AuthController do
   alias DiscussWeb.User
 	alias Discuss.Repo
 
-  # might try another approach following ueberauth_example
+  def callback(%{assigns: %{ueberauth_failure: _fails}} = conn, _params) do
+    conn
+    |> put_flash(:error, "Failed to authenticate.")
+    |> redirect to: Routes.topic_path(conn, :index)
+  end
+
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
     user_data = %{token: auth.credentials.token, email: auth.info.email, provider: auth.provider}
     changeset = User.changeset(%User{}, user_data)
@@ -17,7 +22,7 @@ defmodule DiscussWeb.AuthController do
     case insert_or_update_user(changeset) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "Welcome back!")
+        |> put_flash(:info, "Logged in as " <> user.email)
         |> put_session(:user_id, user.id)
         |> redirect to: Routes.topic_path(conn, :index)
       {:error, _reason} ->

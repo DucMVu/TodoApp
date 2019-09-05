@@ -1,4 +1,4 @@
-<h4>List of topics</h4>
+<h4 class="center">LIST OF TOPICS</h4>
 
 <ul class="collection">
   <%= for topic <- @topics do %>
