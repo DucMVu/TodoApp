@@ -6,13 +6,13 @@ defmodule DiscussWeb.User do
     field :email, :string
     field :provider, :string
     field :token, :string
-
+    field :nickname, :string
     timestamps()
   end
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:email, :provider, :token])
-    |> validate_required([:email, :provider, :token])
+    |> cast(params, [:email, :provider, :token, :nickname])
+    |> validate_required([:email, :provider, :token, :nickname])
   end
 end

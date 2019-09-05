@@ -17,9 +17,11 @@
       <div class="nav-wrapper container">
         <a href="/" class="brand-logo left"><i class="material-icons">home</i></a>
         <ul class="right">
-          <li style="font-size: 14px">Sign in</li>
+          <%# <li>
+            <a href="/about" class="">About</a>
+          </li> %>
           <li>
-            <%= link "Github", to: Routes.auth_path(@conn, :request, "github") %>
+            <%= link "Sign in with Github", to: Routes.auth_path(@conn, :request, "github") %>
           </li>
         </ul>
       </div>

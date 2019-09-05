@@ -12,7 +12,12 @@ defmodule DiscussWeb.AuthController do
   end
 
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
-    user_data = %{token: auth.credentials.token, email: auth.info.email, provider: "github"}
+    user_data = %{
+      token: auth.credentials.token,
+      email: auth.info.email,
+      provider: Atom.to_string(auth.provider),
+      nickname: auth.info.nickname
+    }
     changeset = User.changeset(%User{}, user_data)
 
     signin(conn, changeset)
@@ -22,7 +27,7 @@ defmodule DiscussWeb.AuthController do
     case insert_or_update_user(changeset) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "Logged in as " <> user.email)
+        |> put_flash(:info, "Logged in as " <> user.nickname)
         |> put_session(:user_id, user.id)
         |> redirect to: Routes.topic_path(conn, :index)
       {:error, _reason} ->
