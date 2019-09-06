@@ -22,7 +22,7 @@ h6{font-size: 1.4rem; letter-spacing: 0; line-height: 1.2}
   background-repeat: no-repeat;
   height: 7rem;
   /* opacity: 0.5; */
-  /* filter: grayscale(100%); */
+  filter: grayscale(100%);
 }
 
 body {
