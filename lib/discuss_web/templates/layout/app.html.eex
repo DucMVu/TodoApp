@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
-    <nav class="light-blue">
+    <nav class="red">
       <div class="nav-wrapper container">
         <a href="/" class="brand-logo left"><i class="material-icons">home</i></a>
         <ul class="right">
@@ -38,6 +38,10 @@
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
     </main>
+
+    <footer class="footer-image">
+    </footer>
+    
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
