@@ -4,6 +4,7 @@ defmodule DiscussWeb.Topic do
   # find table 'topic' with 'title' field
   schema "topics" do
     field :title, :string
+    belongs_to :user, DiscussWeb.User
 
     timestamps()
   end
