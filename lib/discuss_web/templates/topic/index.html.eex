@@ -2,10 +2,13 @@
 
 <ul class="collection">
   <%= for topic <- @topics do %>
-    <li class="collection-item">
+    <li class="collection-item" style="line-height: 2rem">
       <%= topic.title %>
 
-      <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>        <div class="right">
+      <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>
+        <div class="right" style="color: #f05423">
+          <%= "by " <> assigns.user.nickname %>
+          &nbsp
           <%= link "Edit", to: Routes.topic_path(@conn, :edit, topic) %>
           <%# 'method: :delete' explicitly specifies delete method %>
           &nbsp

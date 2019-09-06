@@ -20,7 +20,11 @@
           <%# <li>
             <a href="/about" class="">About</a>
           </li> %>
-          <%= if @conn.assigns[:user] do %>
+          <%= if @conn.assigns.user do %>
+          <%# or @conn.assigns[:user] %>
+            <li>
+              <%= "Hello, " <> assigns.user.nickname %>
+            </li>
             <li>
               <%= link "Sign out", to: Routes.auth_path(@conn, :signout) %>
             </li>

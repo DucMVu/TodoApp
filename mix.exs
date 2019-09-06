@@ -20,7 +20,7 @@ defmodule Discuss.MixProject do
   def application do
     [
       mod: {Discuss.Application, []},
-      extra_applications: [:logger, :runtime_tools, :ueberauth, :ueberauth_github],
+      extra_applications: [:logger, :runtime_tools, :ueberauth, :ueberauth_github]
       # combine with extra_applications above???
       # applications: [:logger, :ueberauth, :ueberauth_github]
     ]
