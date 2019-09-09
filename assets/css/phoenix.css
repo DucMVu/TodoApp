@@ -39,6 +39,10 @@ nav ul a, nav ul li {
   font-size: 18px !important;
 }
 
+ul li.collection-item span a {
+  color: #493635
+}
+
 .container{
   margin: 0 auto;
   max-width: 80.0rem;

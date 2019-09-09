@@ -3,7 +3,9 @@
 <ul class="collection">
   <%= for topic <- @topics do %>
     <li class="collection-item" style="line-height: 2rem">
-      <%= topic.title %>
+      <span>
+        <%= link topic.title, to: Routes.topic_path(@conn, :show, topic) %>
+      </span>
 
       <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>
         <div class="right" style="color: #f05423">
