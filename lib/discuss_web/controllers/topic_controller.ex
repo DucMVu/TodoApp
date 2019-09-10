@@ -67,12 +67,23 @@ defmodule DiscussWeb.TopicController do
   end
 
   def delete(conn, %{"id" => topic_id}) do
-    Repo.get!(Topic, topic_id)
-    |> Repo.delete!()
+    result =
+      Repo.get!(Topic, topic_id)
+      |> Ecto.Changeset.change()
+      |> Ecto.Changeset.foreign_key_constraint(:comments, name: "comments_topic_id_fkey")
+      |> Repo.delete()
 
-    conn
-    |> put_flash(:info, "Topic deleted!")
-    |> redirect(to: Routes.topic_path(conn, :index))
+    case result do
+      {:ok, _} ->
+        conn
+        |> put_flash(:info, "Topic deleted!")
+        |> redirect(to: Routes.topic_path(conn, :index))
+
+      {:error, changeset} ->
+        conn
+        |> put_flash(:error, "Can't be deleted because there are comments!")
+        |> redirect(to: Routes.topic_path(conn, :index))
+    end
   end
 
   def check_topic_owner(conn, _params) do
