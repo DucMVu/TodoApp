@@ -3,14 +3,15 @@ defmodule DiscussWeb.CommentsChannel do
   alias DiscussWeb.{Topic, Comment}
   alias Discuss.Repo
 
+  import Ecto.Query
+
   def join("comments:" <> topic_id, _params, socket) do
     topic_id = String.to_integer(topic_id)
 
     topic =
       Topic
+      |> preload(comments: [:user])
       |> Repo.get(topic_id)
-      # every user is nested inside comments
-      |> Repo.preload(comments: [:user])
 
     {:ok, %{comments: topic.comments}, assign(socket, :topic, topic)}
   end
@@ -27,7 +28,7 @@ defmodule DiscussWeb.CommentsChannel do
 
     case Repo.insert(changeset) do
       {:ok, comment} ->
-        broadcast!(socket, "comments:#{socket.assigns.topic.id}:new", %{comment: comment})
+        broadcast!(socket, "comments:#{socket.assigns.topic.id}:new", %{comment: Repo.preload(comment, :user)})
         {:reply, :ok, socket}
 
       {:error, _reason} ->
