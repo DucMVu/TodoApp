@@ -1,11 +1,15 @@
 <h5><%= "TOPIC: " <> @topic.title %></h5>
 
-<div class="input-field">
-  <textarea class="materialize-textarea"></textarea>
-  <button class="btn">Add Comment</button>
-  <ul class="collection">
-  </ul>
-</div>
+<%= if @conn.assigns.user do %>
+  <div class="input-field">
+    <ul class="collection">
+    </ul>
+    <textarea class="form-control"></textarea>
+    <button class="btn light-blue">Add Comment</button>
+  </div>
+<% else %>
+  <p>Only logged-in user can see and post comments.</p>
+<% end %>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
