@@ -9,7 +9,6 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    console.log('test event listener')
     window.createSocket(<%= @topic.id %>)
   })
 </script>
