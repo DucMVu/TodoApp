@@ -8,8 +8,8 @@
       </span>
 
       <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>
-        <div class="right" style="color: #f05423">
-          <%= "by " <> assigns.user.nickname %>
+        <div style="color: #f05423; padding-top: 10px">
+          <%= "created by " <> assigns.user.nickname %>
           &nbsp
           <%= link "Edit", to: Routes.topic_path(@conn, :edit, topic) %>
           <%# 'method: :delete' explicitly specifies delete method %>

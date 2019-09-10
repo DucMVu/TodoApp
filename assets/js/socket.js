@@ -18,6 +18,9 @@ const createSocket = (topicId) => {
     const content = document.querySelector('textarea').value;
 
     channel.push('comment:add', { content: content });
+
+    // clear textarea on click
+    document.querySelector('textarea').value = ""
   });
 }
 
@@ -45,7 +48,7 @@ function commentTemplate(comment) {
   return `
     <li class="collection-item">
       ${comment.content}
-      <div class="secondary-content">
+      <div class="secondary-content" style="color: #f05423">
         ${nickname}
       </div>
     </li>
