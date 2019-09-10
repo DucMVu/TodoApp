@@ -40,7 +40,9 @@ nav ul a, nav ul li {
 }
 
 ul li.collection-item span a {
-  color: #493635
+  color: #493635;
+  /* 400 normal, 700 bold  */
+  font-weight: 500;
 }
 
 .container{
