@@ -20,6 +20,15 @@
     </li>
   <% end %>
 </ul>
+Page: <%= @page.page_number %>/<%=@page.total_pages %>
+
+<%= if @page.page_number > 1 do %>
+  <%= link "Prev Page", to: Routes.topic_path(@conn, :index, page: @page.page_number - 1) %>
+<% end %>
+&nbsp
+<%= if @page.page_number < @page.total_pages do %>
+  <%= link "Next Page", to: Routes.topic_path(@conn, :index, page: @page.page_number + 1) %>
+<% end %>
 
 <div class="right">
   <%= link to: Routes.topic_path(@conn, :new), class: "btn-floating btn-large waves-effect waves-light light-blue" do %>
