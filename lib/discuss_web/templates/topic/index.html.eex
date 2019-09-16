@@ -3,11 +3,11 @@
 <ul class="collection">
   <%= for topic <- @topics do %>
     <div class="row collection-item" style="line-height: 2rem; padding-left: 0">
-      <div class="col s12">
+      <div class="col l8">
         <%= link topic.title, to: Routes.topic_path(@conn, :show, topic) %>
       </div>
           
-      <div class="col s4">
+      <div class="col l4">
         <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>
           <div class="secondary-content" style="color: #f05423; padding-right: 10px">
             <%= "by " <> assigns.user.nickname %>
@@ -15,10 +15,9 @@
             &nbsp
 
             <%= link "Edit", to: Routes.topic_path(@conn, :edit, topic) %>
-            <%# 'method: :delete' explicitly specifies delete method %>
 
             &nbsp
-
+            <%# 'method: :delete' explicitly specifies delete method %>
             <%= link "Delete", to: Routes.topic_path(@conn, :delete, topic), method: :delete %>
           </div>
         <% end %>
