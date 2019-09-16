@@ -4,5 +4,5 @@ defmodule Discuss.Repo do
     adapter: Ecto.Adapters.Postgres
 
   use Scrivener,
-    page_size: 5
+    page_size: 10
 end

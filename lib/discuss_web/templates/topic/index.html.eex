@@ -2,35 +2,50 @@
 
 <ul class="collection">
   <%= for topic <- @topics do %>
-    <li class="collection-item" style="line-height: 2rem">
-      <span>
+    <div class="row collection-item" style="line-height: 2rem; padding-left: 0">
+      <div class="col s12 l8">
         <%= link topic.title, to: Routes.topic_path(@conn, :show, topic) %>
-      </span>
+      </div>
+          
+      <div class="col s12 l4">
+        <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>
+          <div class="secondary-content" style="color: #f05423; padding-right: 10px">
+            <%= "by " <> assigns.user.nickname %>
 
-      <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>
-        <div style="color: #f05423; padding-top: 10px">
-          <%= "created by " <> assigns.user.nickname %>
-          &nbsp
-          <%= link "Edit", to: Routes.topic_path(@conn, :edit, topic) %>
-          <%# 'method: :delete' explicitly specifies delete method %>
-          &nbsp
-          <%= link "Delete", to: Routes.topic_path(@conn, :delete, topic), method: :delete %>
-        </div>
-      <% end %>
-    </li>
+            &nbsp
+
+            <%= link "Edit", to: Routes.topic_path(@conn, :edit, topic) %>
+            <%# 'method: :delete' explicitly specifies delete method %>
+
+            &nbsp
+
+            <%= link "Delete", to: Routes.topic_path(@conn, :delete, topic), method: :delete %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 </ul>
-Page: <%= @page.page_number %>/<%=@page.total_pages %>
 
-<%= if @page.page_number > 1 do %>
-  <%= link "Prev Page", to: Routes.topic_path(@conn, :index, page: @page.page_number - 1) %>
-<% end %>
-&nbsp
-<%= if @page.page_number < @page.total_pages do %>
-  <%= link "Next Page", to: Routes.topic_path(@conn, :index, page: @page.page_number + 1) %>
-<% end %>
+<div style="padding-left: 10px">
+  Page: <%= @page.page_number %>/<%=@page.total_pages %>
+    
+  <%= if @page.page_number > 1 do %>
+    &nbsp
+    <%= link "First", to: Routes.topic_path(@conn, :index, page: @page.page_number == 1) %>
+    &nbsp
+    <%= link "Previous", to: Routes.topic_path(@conn, :index, page: @page.page_number - 1) %>
+  <% end %>
 
-<div class="right">
+  &nbsp
+
+  <%= if @page.page_number < @page.total_pages do %>
+    <%= link "Next", to: Routes.topic_path(@conn, :index, page: @page.page_number + 1) %>
+    &nbsp
+    <%= link "Last", to: Routes.topic_path(@conn, :index, page: @page.total_pages) %>
+  <% end %>
+
+  <div class="right">
   <%= link to: Routes.topic_path(@conn, :new), class: "btn-floating btn-large waves-effect waves-light light-blue" do %>
     <i class="material-icons">add</i>
   <% end %>
