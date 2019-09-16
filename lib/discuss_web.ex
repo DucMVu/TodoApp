@@ -36,7 +36,7 @@ defmodule DiscussWeb do
       import Ecto.Query
     end
   end
-  
+
   def view do
     quote do
       use Phoenix.View,

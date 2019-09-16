@@ -1,6 +1,8 @@
 defmodule DiscussWeb.User do
   use DiscussWeb, :model
 
+  @derive {Jason.Encoder, only: [:nickname]}
+
   # find table 'topic' with 'title' field
   schema "users" do
     field :email, :string
@@ -8,7 +10,8 @@ defmodule DiscussWeb.User do
     field :token, :string
     field :nickname, :string
     has_many :topics, DiscussWeb.Topic
-    
+    has_many :comments, DiscussWeb.Comment
+
     timestamps()
   end
 
