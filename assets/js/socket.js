@@ -40,16 +40,16 @@ function renderComment(event) {
 }
 
 function commentTemplate(comment) {
-  let nickname = 'anonymous'
+  let email = 'anonymous'
   if (comment.user) {
-    nickname = comment.user.nickname
+    email = comment.user.email
   }
 
   return `
     <li class="collection-item">
       ${comment.content}
       <div class="secondary-content" style="color: #f05423">
-        ${nickname}
+        ${email}
       </div>
     </li>
   `
