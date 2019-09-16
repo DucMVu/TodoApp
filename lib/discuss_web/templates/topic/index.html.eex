@@ -3,11 +3,11 @@
 <ul class="collection">
   <%= for topic <- @topics do %>
     <div class="row collection-item" style="line-height: 2rem; padding-left: 0">
-      <div class="col s12 l8">
+      <div class="col s12">
         <%= link topic.title, to: Routes.topic_path(@conn, :show, topic) %>
       </div>
           
-      <div class="col s12 l4">
+      <div class="col s4">
         <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>
           <div class="secondary-content" style="color: #f05423; padding-right: 10px">
             <%= "by " <> assigns.user.nickname %>
