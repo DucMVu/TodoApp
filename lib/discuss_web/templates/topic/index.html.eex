@@ -10,7 +10,7 @@
       <div class="col l4">
         <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>
           <div class="secondary-content" style="color: #f05423; padding-right: 10px">
-            <%= "by " <> assigns.user.nickname %>
+            <%= "by " <> assigns.user.email %>
 
             &nbsp
 
