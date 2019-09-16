@@ -37,6 +37,10 @@
             <li>
               <%= link "Sign in with Github", to: Routes.auth_path(@conn, :request, "github") %>
             </li>
+            <li>
+              <%= link "Sign in with Google", to: Routes.auth_path(@conn, :request, "google") %>
+            </li>
+
           <% end %>
         </ul>
       </div>

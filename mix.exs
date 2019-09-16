@@ -25,6 +25,7 @@ defmodule Discuss.MixProject do
         :runtime_tools,
         :ueberauth,
         :ueberauth_github,
+        :ueberauth_google,
         :scrivener,
         :scrivener_ecto
       ]
@@ -52,6 +53,7 @@ defmodule Discuss.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:ueberauth, "~> 0.6"},
       {:ueberauth_github, "~> 0.7"},
+      {:ueberauth_google, "~> 0.8"},
       {:scrivener, "~> 2.0"},
       {:scrivener_ecto, "~> 2.0"}
     ]
