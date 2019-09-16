@@ -12,18 +12,9 @@ defmodule DiscussWeb.AuthController do
   end
 
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
-    IO.puts "+++"
-    IO.inspect(auth.credentials.token)
-    IO.puts "+++"
-    IO.inspect(auth.info.email)
-    IO.puts "+++"
-    IO.inspect(Atom.to_string(auth.provider))
-    IO.puts "+++"
-    IO.inspect(auth.info.nickname)
-    IO.puts "+++"
     user_data = %{
       token: auth.credentials.token,
-      email: auth.info.email,
+      email: auth.info.email |> String.slice(0..10),
       provider: Atom.to_string(auth.provider)
       # nickname: auth.info.nickname
     }
