@@ -3,11 +3,11 @@
 <ul class="collection">
   <%= for topic <- @topics do %>
     <div class="row collection-item" style="line-height: 2rem; padding-left: 0">
-      <div class="col l8 m7">
+      <div class="col l7">
         <%= link topic.title, to: Routes.topic_path(@conn, :show, topic) %>
       </div>
           
-      <div class="col l4 m5">
+      <div class="col l5">
         <div class="secondary-content" style="color: #f05423; padding-right: 10px">
           <%= "by " <> Discuss.Repo.get(DiscussWeb.User, topic.user_id).email %>
 
