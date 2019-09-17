@@ -1,5 +1,5 @@
-import {Socket} from "phoenix"
-let socket = new Socket("/socket", {params: {token: window.userToken}})
+import { Socket } from "phoenix"
+let socket = new Socket("/socket", { params: { token: window.userToken } })
 
 socket.connect()
 
@@ -49,7 +49,7 @@ function commentTemplate(comment) {
     <li class="collection-item">
       ${comment.content}
       <div class="secondary-content" style="color: #f05423">
-        ${email}
+        by ${email}
       </div>
     </li>
   `

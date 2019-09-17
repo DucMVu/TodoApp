@@ -8,19 +8,17 @@
       </div>
           
       <div class="col l4">
-        <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>
-          <div class="secondary-content" style="color: #f05423; padding-right: 10px">
-            <%= "by " <> assigns.user.email %>
+        <div class="secondary-content" style="color: #f05423; padding-right: 10px">
+          <%= "by " <> Discuss.Repo.get(DiscussWeb.User, topic.user_id).email %>
 
+          <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>
             &nbsp
-
             <%= link "Edit", to: Routes.topic_path(@conn, :edit, topic) %>
-
             &nbsp
             <%# 'method: :delete' explicitly specifies delete method %>
             <%= link "Delete", to: Routes.topic_path(@conn, :delete, topic), method: :delete %>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>

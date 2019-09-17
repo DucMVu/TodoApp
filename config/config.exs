@@ -27,8 +27,8 @@ config :phoenix, :json_library, Jason
 
 config :ueberauth, Ueberauth,
   providers: [
-    github: { Ueberauth.Strategy.Github, [allow_private_emails: true] },
-    google: { Ueberauth.Strategy.Google, [] }
+    github: {Ueberauth.Strategy.Github, [allow_private_emails: true]},
+    google: {Ueberauth.Strategy.Google, []}
   ]
 
 config :ueberauth, Ueberauth.Strategy.Github.OAuth,
