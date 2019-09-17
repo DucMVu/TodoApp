@@ -6,7 +6,7 @@ defmodule Discuss.Repo.Migrations.AddUsers do
       add :email, :string
       add :provider, :string
       add :token, :string
-      # add :nickname, :string
+      add :full_email, :string
 
       timestamps()
     end
