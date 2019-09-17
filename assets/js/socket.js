@@ -46,7 +46,7 @@ function commentTemplate(comment) {
   }
 
   return `
-    <li class="collection-item">
+    <li class="collection-item" style="line-height: 2rem">
       ${comment.content}
       <div class="secondary-content" style="color: #f05423">
         by ${email}
