@@ -14,7 +14,7 @@ defmodule DiscussWeb.AuthController do
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
     user_data = %{
       token: auth.credentials.token,
-      email: (auth.info.email |> String.slice(0..8)) <> "...",
+      email: (auth.info.email |> String.slice(0..7)) <> "...",
       full_email: auth.info.email,
       provider: Atom.to_string(auth.provider)
     }
